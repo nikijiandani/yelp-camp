@@ -10,12 +10,15 @@ router.get("/", function(req, res){
 
 //show register form
 router.get("/register", function(req, res){
-    res.render("register");
+    res.render("register", {page: 'register'});
 });
 
 //handle sign up logic
 router.post("/register", function(req, res){
     var newUser = new User({username: req.body.username});
+    if(req.body.adminCode === 'secretcode123') {
+        newUser.isAdmin === true;
+    }
     User.register(newUser, req.body.password, function(err, user){
         if(err){
             req.flash("error", err.message);
@@ -30,14 +33,16 @@ router.post("/register", function(req, res){
 
 //show login form
 router.get("/login", function(req, res){
-   res.render("login"); 
+   res.render("login", {page: 'login'}); 
 });
 
 //handling login logic post route
 //middleware
 router.post("/login", passport.authenticate("local", {
     successRedirect: "/campgrounds",
-    failureRedirect: "/login"
+    failureRedirect: "/login",
+    failureFlash: "Invalid username or password",
+    successFlash: "Welcome back!"
 }), function(req, res){
 });
 

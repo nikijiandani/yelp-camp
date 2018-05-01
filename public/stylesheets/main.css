@@ -3,7 +3,7 @@
 }
 
 .thumbnail {
-    padding: 0;
+    padding-top: 5px;
 }
 
 .thumbnail .caption-full {
@@ -17,4 +17,23 @@
 #map {
     height: 400px;
     width: 100%;
+}
+.txtaligncenter {
+    text-align: center;
+}
+.miniform {
+    width: 35%; 
+    margin: 25px auto;
+}
+.placeholder:focus::-webkit-input-placeholder {
+  transition: opacity 0.1s 0.1s ease; 
+  opacity: 0;
+}
+
+@media only screen and (max-width: 768px) {
+    .miniform {width: 100%; padding: 0 25px}
+}
+
+@media only screen and (max-width: 768px) {
+    .mob{padding: 10px 16px; font-size: 18px; line-height: 1.3333333; border-radius: 6px;}
 }
